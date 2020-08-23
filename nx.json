@@ -1,7 +1,7 @@
 {
   "npmScope": "flights",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "main"
   },
   "implicitDependencies": {
     "angular.json": "*",
@@ -28,6 +28,15 @@
     "luggage-e2e": {
       "tags": [],
       "implicitDependencies": ["luggage"]
+    },
+    "luggage-domain": {
+      "tags": ["domain:luggage", "type:domain-logic"]
+    },
+    "luggage-feature-checkin": {
+      "tags": ["domain:luggage", "type:feature"]
+    },
+    "luggage-feature-report-loss": {
+      "tags": ["domain:luggage", "type:feature"]
     }
   }
 }
