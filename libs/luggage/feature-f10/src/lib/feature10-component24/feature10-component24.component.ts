@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'luggage-feature10-component24',
+  templateUrl: './feature10-component24.component.html',
+  styleUrls: ['./feature10-component24.component.scss']
+})
+export class Feature10Component24Component implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
