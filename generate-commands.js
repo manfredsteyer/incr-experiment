@@ -3,6 +3,7 @@ const existing = 0; // there are already two features
 
 for(let i = 0; i<count-existing; i++) {
     for (let j=0; j<30; j++) {
-        console.log(`call ng g component feature${i}-component${j} --project luggage-feature-f${i}`);
+        // console.log(`call ng g component feature${i}-component${j} --project luggage-feature-f${i}`);
+        console.log(`<luggage-feature${i}-component${j}></luggage-feature${i}-component${j}>`);
     }
 }
