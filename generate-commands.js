@@ -7,7 +7,7 @@ let content = '';
 for(let i = 0; i<count-existing; i++) {
     
     console.log(`{ 
-    path: 'feature${i}, 
+    path: 'feature${i}', 
     loadChildren: () => import('@flights/luggage/feature-f${i}').then(m => m.LuggageFeatureF${i}Module) 
 },`)
     
