@@ -4,25 +4,21 @@ import { BehaviorSubject } from 'rxjs';
 import { Entity20 } from '../entities/entity20';
 import { Entity20DataService } from '../infrastructure/entity20.data.service';
 
-
 @Injectable({ providedIn: 'root' })
 export class F20Facade {
+  private entity20ListSubject = new BehaviorSubject<Entity20[]>([]);
+  entity20List$ = this.entity20ListSubject.asObservable();
 
-    private entity20ListSubject = new BehaviorSubject<Entity20[]>([]); 
-    entity20List$ = this.entity20ListSubject.asObservable();
+  constructor(private entity20DataService: Entity20DataService) {}
 
-    constructor(private entity20DataService: Entity20DataService) {
-    }
-
-    load(): void {
-        this.entity20DataService.load().subscribe(
-            entity20List => {
-                this.entity20ListSubject.next(entity20List)
-            },
-            err => {
-                console.error('err', err);
-            }
-        );
-    }
-
+  load(): void {
+    this.entity20DataService.load().subscribe(
+      (entity20List) => {
+        this.entity20ListSubject.next(entity20List);
+      },
+      (err) => {
+        console.error('err', err);
+      }
+    );
+  }
 }

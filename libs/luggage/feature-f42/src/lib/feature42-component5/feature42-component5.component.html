@@ -1,10 +1,9 @@
-<h1>luggage-checkin</h1>
+<h1>luggage-checkin!!!!!!!!!</h1>
 
 <table class="table" *ngIf="luggageList$ | async">
-    <tr *ngFor="let luggage of luggageList$ | async">
-        <td>{{luggage.id}}</td>
-        <td>{{luggage.name}}</td>
-        <td>{{luggage.description}}**</td>
-    </tr>
+  <tr *ngFor="let luggage of luggageList$ | async">
+    <td>{{ luggage.id }}</td>
+    <td>{{ luggage.name }}</td>
+    <td>{{ luggage.description }}**</td>
+  </tr>
 </table>
-

@@ -1,5 +1,5 @@
 export interface Entity61 {
-    id: number;
-    name: string;
-    description: string;
+  id: number;
+  name: string;
+  description: string;
 }

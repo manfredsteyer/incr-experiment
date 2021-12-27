@@ -21,325 +21,59 @@
       }
     }
   },
-  "projects": {
-    "luggage": {
-      "tags": []
-    },
-    "luggage-e2e": {
-      "tags": [],
-      "implicitDependencies": ["luggage"]
-    },
-    "luggage-domain": {
-      "tags": ["domain:luggage", "type:domain-logic"]
-    },
-    "luggage-feature-checkin": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-report-loss": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f0": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f1": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f2": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f3": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f4": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f5": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f6": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f7": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f8": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f9": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f10": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f11": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f12": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f13": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f14": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f15": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f16": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f17": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f18": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f19": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f20": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f21": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f22": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f23": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f24": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f25": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f26": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f27": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f28": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f29": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f30": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f31": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f32": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f33": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f34": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f35": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f36": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f37": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f38": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f39": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f40": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f41": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f42": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f43": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f44": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f45": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f46": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f47": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f48": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f49": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f50": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f51": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f52": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f53": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f54": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f55": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f56": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f57": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f58": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f59": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f60": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f61": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f62": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f63": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f64": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f65": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f66": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f67": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f68": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f69": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f70": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f71": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f72": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f73": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f74": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f75": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f76": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f77": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f78": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f79": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f80": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f81": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f82": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f83": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f84": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f85": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f86": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f87": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f88": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f89": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f90": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f91": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f92": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f93": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f94": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f95": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f96": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f97": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f98": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f99": {
-      "tags": ["domain:luggage", "type:feature"]
-    },
-    "luggage-feature-f100": {
-      "tags": ["domain:luggage", "type:feature"]
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "generators": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
     }
-  }
+  },
+  "defaultProject": "luggage"
 }

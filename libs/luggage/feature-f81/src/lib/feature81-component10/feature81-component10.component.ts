@@ -1,24 +1,21 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CheckinFacade } from '@flights/luggage/domain';
 
 @Component({
   selector: 'luggage-feature81-component10',
   templateUrl: './feature81-component10.component.html',
-  styleUrls: ['./feature81-component10.component.scss']
+  styleUrls: ['./feature81-component10.component.scss'],
 })
 export class Feature81Component10Component implements OnInit {
+  luggageList$ = this.checkinFacade.luggageList$;
 
-    luggageList$ = this.checkinFacade.luggageList$;
+  constructor(private checkinFacade: CheckinFacade) {}
 
-    constructor(private checkinFacade: CheckinFacade) {
-    }
-    
-    ngOnInit() {
-        this.load();
-    }
+  ngOnInit() {
+    this.load();
+  }
 
-    load(): void {
-        this.checkinFacade.load();
-    }
-
+  load(): void {
+    this.checkinFacade.load();
+  }
 }

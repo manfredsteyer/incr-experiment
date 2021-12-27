@@ -4,25 +4,21 @@ import { BehaviorSubject } from 'rxjs';
 import { Entity13 } from '../entities/entity13';
 import { Entity13DataService } from '../infrastructure/entity13.data.service';
 
-
 @Injectable({ providedIn: 'root' })
 export class F13Facade {
+  private entity13ListSubject = new BehaviorSubject<Entity13[]>([]);
+  entity13List$ = this.entity13ListSubject.asObservable();
 
-    private entity13ListSubject = new BehaviorSubject<Entity13[]>([]); 
-    entity13List$ = this.entity13ListSubject.asObservable();
+  constructor(private entity13DataService: Entity13DataService) {}
 
-    constructor(private entity13DataService: Entity13DataService) {
-    }
-
-    load(): void {
-        this.entity13DataService.load().subscribe(
-            entity13List => {
-                this.entity13ListSubject.next(entity13List)
-            },
-            err => {
-                console.error('err', err);
-            }
-        );
-    }
-
+  load(): void {
+    this.entity13DataService.load().subscribe(
+      (entity13List) => {
+        this.entity13ListSubject.next(entity13List);
+      },
+      (err) => {
+        console.error('err', err);
+      }
+    );
+  }
 }

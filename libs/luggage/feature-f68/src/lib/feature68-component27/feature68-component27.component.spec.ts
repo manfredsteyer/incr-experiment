@@ -8,9 +8,8 @@ describe('Feature68Component27Component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Feature68Component27Component ]
-    })
-    .compileComponents();
+      declarations: [Feature68Component27Component],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

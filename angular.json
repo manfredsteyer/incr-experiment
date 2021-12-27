@@ -9,7 +9,7 @@
       "prefix": "flights",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@nrwl/angular:webpack-browser",
           "options": {
             "outputPath": "dist/apps/luggage",
             "index": "apps/luggage/src/index.html",
@@ -35,7 +35,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -93,33 +92,6 @@
         }
       }
     },
-    "luggage-e2e": {
-      "root": "apps/luggage-e2e",
-      "sourceRoot": "apps/luggage-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/luggage-e2e/cypress.json",
-            "tsConfig": "apps/luggage-e2e/tsconfig.e2e.json",
-            "devServerTarget": "luggage:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "luggage:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/luggage-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/luggage-e2e/**/*"]
-          }
-        }
-      }
-    },
     "luggage-domain": {
       "projectType": "library",
       "root": "libs/luggage/domain",
@@ -127,7 +99,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/domain/tsconfig.lib.json",
             "project": "libs/luggage/domain/ng-package.json"
@@ -164,6 +136,33 @@
         }
       }
     },
+    "luggage-e2e": {
+      "root": "apps/luggage-e2e",
+      "sourceRoot": "apps/luggage-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/luggage-e2e/cypress.json",
+            "tsConfig": "apps/luggage-e2e/tsconfig.e2e.json",
+            "devServerTarget": "luggage:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "luggage:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/luggage-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/luggage-e2e/**/*"]
+          }
+        }
+      }
+    },
     "luggage-feature-checkin": {
       "projectType": "library",
       "root": "libs/luggage/feature-checkin",
@@ -171,7 +170,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-checkin/tsconfig.lib.json",
             "project": "libs/luggage/feature-checkin/ng-package.json"
@@ -211,53 +210,6 @@
         }
       }
     },
-    "luggage-feature-report-loss": {
-      "projectType": "library",
-      "root": "libs/luggage/feature-report-loss",
-      "sourceRoot": "libs/luggage/feature-report-loss/src",
-      "prefix": "luggage",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/luggage/feature-report-loss/tsconfig.lib.json",
-            "project": "libs/luggage/feature-report-loss/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/luggage/feature-report-loss/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/luggage/feature-report-loss/tsconfig.lib.json",
-              "libs/luggage/feature-report-loss/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/luggage/feature-report-loss/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/luggage/feature-report-loss/jest.config.js",
-            "tsConfig": "libs/luggage/feature-report-loss/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/luggage/feature-report-loss/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
     "luggage-feature-f0": {
       "projectType": "library",
       "root": "libs/luggage/feature-f0",
@@ -265,7 +217,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f0/tsconfig.lib.json",
             "project": "libs/luggage/feature-f0/ng-package.json"
@@ -309,7 +261,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f1/tsconfig.lib.json",
             "project": "libs/luggage/feature-f1/ng-package.json"
@@ -346,358 +298,6 @@
         }
       }
     },
-    "luggage-feature-f2": {
-      "projectType": "library",
-      "root": "libs/luggage/feature-f2",
-      "sourceRoot": "libs/luggage/feature-f2/src",
-      "prefix": "luggage",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/luggage/feature-f2/tsconfig.lib.json",
-            "project": "libs/luggage/feature-f2/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/luggage/feature-f2/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/luggage/feature-f2/tsconfig.lib.json",
-              "libs/luggage/feature-f2/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f2/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/luggage/feature-f2/jest.config.js",
-            "tsConfig": "libs/luggage/feature-f2/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/luggage/feature-f2/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "luggage-feature-f3": {
-      "projectType": "library",
-      "root": "libs/luggage/feature-f3",
-      "sourceRoot": "libs/luggage/feature-f3/src",
-      "prefix": "luggage",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/luggage/feature-f3/tsconfig.lib.json",
-            "project": "libs/luggage/feature-f3/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/luggage/feature-f3/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/luggage/feature-f3/tsconfig.lib.json",
-              "libs/luggage/feature-f3/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f3/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/luggage/feature-f3/jest.config.js",
-            "tsConfig": "libs/luggage/feature-f3/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/luggage/feature-f3/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "luggage-feature-f4": {
-      "projectType": "library",
-      "root": "libs/luggage/feature-f4",
-      "sourceRoot": "libs/luggage/feature-f4/src",
-      "prefix": "luggage",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/luggage/feature-f4/tsconfig.lib.json",
-            "project": "libs/luggage/feature-f4/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/luggage/feature-f4/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/luggage/feature-f4/tsconfig.lib.json",
-              "libs/luggage/feature-f4/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f4/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/luggage/feature-f4/jest.config.js",
-            "tsConfig": "libs/luggage/feature-f4/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/luggage/feature-f4/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "luggage-feature-f5": {
-      "projectType": "library",
-      "root": "libs/luggage/feature-f5",
-      "sourceRoot": "libs/luggage/feature-f5/src",
-      "prefix": "luggage",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/luggage/feature-f5/tsconfig.lib.json",
-            "project": "libs/luggage/feature-f5/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/luggage/feature-f5/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/luggage/feature-f5/tsconfig.lib.json",
-              "libs/luggage/feature-f5/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f5/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/luggage/feature-f5/jest.config.js",
-            "tsConfig": "libs/luggage/feature-f5/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/luggage/feature-f5/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "luggage-feature-f6": {
-      "projectType": "library",
-      "root": "libs/luggage/feature-f6",
-      "sourceRoot": "libs/luggage/feature-f6/src",
-      "prefix": "luggage",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/luggage/feature-f6/tsconfig.lib.json",
-            "project": "libs/luggage/feature-f6/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/luggage/feature-f6/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/luggage/feature-f6/tsconfig.lib.json",
-              "libs/luggage/feature-f6/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f6/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/luggage/feature-f6/jest.config.js",
-            "tsConfig": "libs/luggage/feature-f6/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/luggage/feature-f6/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "luggage-feature-f7": {
-      "projectType": "library",
-      "root": "libs/luggage/feature-f7",
-      "sourceRoot": "libs/luggage/feature-f7/src",
-      "prefix": "luggage",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/luggage/feature-f7/tsconfig.lib.json",
-            "project": "libs/luggage/feature-f7/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/luggage/feature-f7/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/luggage/feature-f7/tsconfig.lib.json",
-              "libs/luggage/feature-f7/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f7/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/luggage/feature-f7/jest.config.js",
-            "tsConfig": "libs/luggage/feature-f7/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/luggage/feature-f7/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "luggage-feature-f8": {
-      "projectType": "library",
-      "root": "libs/luggage/feature-f8",
-      "sourceRoot": "libs/luggage/feature-f8/src",
-      "prefix": "luggage",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/luggage/feature-f8/tsconfig.lib.json",
-            "project": "libs/luggage/feature-f8/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/luggage/feature-f8/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/luggage/feature-f8/tsconfig.lib.json",
-              "libs/luggage/feature-f8/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f8/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/luggage/feature-f8/jest.config.js",
-            "tsConfig": "libs/luggage/feature-f8/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/luggage/feature-f8/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "luggage-feature-f9": {
-      "projectType": "library",
-      "root": "libs/luggage/feature-f9",
-      "sourceRoot": "libs/luggage/feature-f9/src",
-      "prefix": "luggage",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/luggage/feature-f9/tsconfig.lib.json",
-            "project": "libs/luggage/feature-f9/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/luggage/feature-f9/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/luggage/feature-f9/tsconfig.lib.json",
-              "libs/luggage/feature-f9/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f9/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/luggage/feature-f9/jest.config.js",
-            "tsConfig": "libs/luggage/feature-f9/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/luggage/feature-f9/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
     "luggage-feature-f10": {
       "projectType": "library",
       "root": "libs/luggage/feature-f10",
@@ -705,7 +305,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f10/tsconfig.lib.json",
             "project": "libs/luggage/feature-f10/ng-package.json"
@@ -742,6 +342,50 @@
         }
       }
     },
+    "luggage-feature-f100": {
+      "projectType": "library",
+      "root": "libs/luggage/feature-f100",
+      "sourceRoot": "libs/luggage/feature-f100/src",
+      "prefix": "luggage",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/luggage/feature-f100/tsconfig.lib.json",
+            "project": "libs/luggage/feature-f100/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/luggage/feature-f100/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/luggage/feature-f100/tsconfig.lib.json",
+              "libs/luggage/feature-f100/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f100/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/luggage/feature-f100/jest.config.js",
+            "tsConfig": "libs/luggage/feature-f100/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/luggage/feature-f100/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "luggage-feature-f11": {
       "projectType": "library",
       "root": "libs/luggage/feature-f11",
@@ -749,7 +393,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f11/tsconfig.lib.json",
             "project": "libs/luggage/feature-f11/ng-package.json"
@@ -793,7 +437,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f12/tsconfig.lib.json",
             "project": "libs/luggage/feature-f12/ng-package.json"
@@ -837,7 +481,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f13/tsconfig.lib.json",
             "project": "libs/luggage/feature-f13/ng-package.json"
@@ -881,7 +525,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f14/tsconfig.lib.json",
             "project": "libs/luggage/feature-f14/ng-package.json"
@@ -925,7 +569,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f15/tsconfig.lib.json",
             "project": "libs/luggage/feature-f15/ng-package.json"
@@ -969,7 +613,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f16/tsconfig.lib.json",
             "project": "libs/luggage/feature-f16/ng-package.json"
@@ -1013,7 +657,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f17/tsconfig.lib.json",
             "project": "libs/luggage/feature-f17/ng-package.json"
@@ -1057,7 +701,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f18/tsconfig.lib.json",
             "project": "libs/luggage/feature-f18/ng-package.json"
@@ -1101,7 +745,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f19/tsconfig.lib.json",
             "project": "libs/luggage/feature-f19/ng-package.json"
@@ -1138,6 +782,50 @@
         }
       }
     },
+    "luggage-feature-f2": {
+      "projectType": "library",
+      "root": "libs/luggage/feature-f2",
+      "sourceRoot": "libs/luggage/feature-f2/src",
+      "prefix": "luggage",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/luggage/feature-f2/tsconfig.lib.json",
+            "project": "libs/luggage/feature-f2/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/luggage/feature-f2/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/luggage/feature-f2/tsconfig.lib.json",
+              "libs/luggage/feature-f2/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f2/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/luggage/feature-f2/jest.config.js",
+            "tsConfig": "libs/luggage/feature-f2/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/luggage/feature-f2/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "luggage-feature-f20": {
       "projectType": "library",
       "root": "libs/luggage/feature-f20",
@@ -1145,7 +833,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f20/tsconfig.lib.json",
             "project": "libs/luggage/feature-f20/ng-package.json"
@@ -1189,7 +877,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f21/tsconfig.lib.json",
             "project": "libs/luggage/feature-f21/ng-package.json"
@@ -1233,7 +921,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f22/tsconfig.lib.json",
             "project": "libs/luggage/feature-f22/ng-package.json"
@@ -1277,7 +965,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f23/tsconfig.lib.json",
             "project": "libs/luggage/feature-f23/ng-package.json"
@@ -1321,7 +1009,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f24/tsconfig.lib.json",
             "project": "libs/luggage/feature-f24/ng-package.json"
@@ -1365,7 +1053,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f25/tsconfig.lib.json",
             "project": "libs/luggage/feature-f25/ng-package.json"
@@ -1409,7 +1097,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f26/tsconfig.lib.json",
             "project": "libs/luggage/feature-f26/ng-package.json"
@@ -1453,7 +1141,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f27/tsconfig.lib.json",
             "project": "libs/luggage/feature-f27/ng-package.json"
@@ -1497,7 +1185,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f28/tsconfig.lib.json",
             "project": "libs/luggage/feature-f28/ng-package.json"
@@ -1541,7 +1229,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f29/tsconfig.lib.json",
             "project": "libs/luggage/feature-f29/ng-package.json"
@@ -1578,6 +1266,50 @@
         }
       }
     },
+    "luggage-feature-f3": {
+      "projectType": "library",
+      "root": "libs/luggage/feature-f3",
+      "sourceRoot": "libs/luggage/feature-f3/src",
+      "prefix": "luggage",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/luggage/feature-f3/tsconfig.lib.json",
+            "project": "libs/luggage/feature-f3/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/luggage/feature-f3/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/luggage/feature-f3/tsconfig.lib.json",
+              "libs/luggage/feature-f3/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f3/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/luggage/feature-f3/jest.config.js",
+            "tsConfig": "libs/luggage/feature-f3/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/luggage/feature-f3/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "luggage-feature-f30": {
       "projectType": "library",
       "root": "libs/luggage/feature-f30",
@@ -1585,7 +1317,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f30/tsconfig.lib.json",
             "project": "libs/luggage/feature-f30/ng-package.json"
@@ -1629,7 +1361,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f31/tsconfig.lib.json",
             "project": "libs/luggage/feature-f31/ng-package.json"
@@ -1673,7 +1405,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f32/tsconfig.lib.json",
             "project": "libs/luggage/feature-f32/ng-package.json"
@@ -1717,7 +1449,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f33/tsconfig.lib.json",
             "project": "libs/luggage/feature-f33/ng-package.json"
@@ -1761,7 +1493,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f34/tsconfig.lib.json",
             "project": "libs/luggage/feature-f34/ng-package.json"
@@ -1805,7 +1537,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f35/tsconfig.lib.json",
             "project": "libs/luggage/feature-f35/ng-package.json"
@@ -1849,7 +1581,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f36/tsconfig.lib.json",
             "project": "libs/luggage/feature-f36/ng-package.json"
@@ -1893,7 +1625,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f37/tsconfig.lib.json",
             "project": "libs/luggage/feature-f37/ng-package.json"
@@ -1937,7 +1669,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f38/tsconfig.lib.json",
             "project": "libs/luggage/feature-f38/ng-package.json"
@@ -1981,7 +1713,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f39/tsconfig.lib.json",
             "project": "libs/luggage/feature-f39/ng-package.json"
@@ -2018,6 +1750,50 @@
         }
       }
     },
+    "luggage-feature-f4": {
+      "projectType": "library",
+      "root": "libs/luggage/feature-f4",
+      "sourceRoot": "libs/luggage/feature-f4/src",
+      "prefix": "luggage",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/luggage/feature-f4/tsconfig.lib.json",
+            "project": "libs/luggage/feature-f4/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/luggage/feature-f4/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/luggage/feature-f4/tsconfig.lib.json",
+              "libs/luggage/feature-f4/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f4/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/luggage/feature-f4/jest.config.js",
+            "tsConfig": "libs/luggage/feature-f4/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/luggage/feature-f4/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "luggage-feature-f40": {
       "projectType": "library",
       "root": "libs/luggage/feature-f40",
@@ -2025,7 +1801,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f40/tsconfig.lib.json",
             "project": "libs/luggage/feature-f40/ng-package.json"
@@ -2069,7 +1845,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f41/tsconfig.lib.json",
             "project": "libs/luggage/feature-f41/ng-package.json"
@@ -2113,7 +1889,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f42/tsconfig.lib.json",
             "project": "libs/luggage/feature-f42/ng-package.json"
@@ -2157,7 +1933,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f43/tsconfig.lib.json",
             "project": "libs/luggage/feature-f43/ng-package.json"
@@ -2201,7 +1977,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f44/tsconfig.lib.json",
             "project": "libs/luggage/feature-f44/ng-package.json"
@@ -2245,7 +2021,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f45/tsconfig.lib.json",
             "project": "libs/luggage/feature-f45/ng-package.json"
@@ -2289,7 +2065,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f46/tsconfig.lib.json",
             "project": "libs/luggage/feature-f46/ng-package.json"
@@ -2333,7 +2109,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f47/tsconfig.lib.json",
             "project": "libs/luggage/feature-f47/ng-package.json"
@@ -2377,7 +2153,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f48/tsconfig.lib.json",
             "project": "libs/luggage/feature-f48/ng-package.json"
@@ -2421,7 +2197,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f49/tsconfig.lib.json",
             "project": "libs/luggage/feature-f49/ng-package.json"
@@ -2458,6 +2234,50 @@
         }
       }
     },
+    "luggage-feature-f5": {
+      "projectType": "library",
+      "root": "libs/luggage/feature-f5",
+      "sourceRoot": "libs/luggage/feature-f5/src",
+      "prefix": "luggage",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/luggage/feature-f5/tsconfig.lib.json",
+            "project": "libs/luggage/feature-f5/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/luggage/feature-f5/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/luggage/feature-f5/tsconfig.lib.json",
+              "libs/luggage/feature-f5/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f5/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/luggage/feature-f5/jest.config.js",
+            "tsConfig": "libs/luggage/feature-f5/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/luggage/feature-f5/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "luggage-feature-f50": {
       "projectType": "library",
       "root": "libs/luggage/feature-f50",
@@ -2465,7 +2285,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f50/tsconfig.lib.json",
             "project": "libs/luggage/feature-f50/ng-package.json"
@@ -2509,7 +2329,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f51/tsconfig.lib.json",
             "project": "libs/luggage/feature-f51/ng-package.json"
@@ -2553,7 +2373,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f52/tsconfig.lib.json",
             "project": "libs/luggage/feature-f52/ng-package.json"
@@ -2597,7 +2417,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f53/tsconfig.lib.json",
             "project": "libs/luggage/feature-f53/ng-package.json"
@@ -2641,7 +2461,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f54/tsconfig.lib.json",
             "project": "libs/luggage/feature-f54/ng-package.json"
@@ -2685,7 +2505,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f55/tsconfig.lib.json",
             "project": "libs/luggage/feature-f55/ng-package.json"
@@ -2729,7 +2549,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f56/tsconfig.lib.json",
             "project": "libs/luggage/feature-f56/ng-package.json"
@@ -2773,7 +2593,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f57/tsconfig.lib.json",
             "project": "libs/luggage/feature-f57/ng-package.json"
@@ -2817,7 +2637,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f58/tsconfig.lib.json",
             "project": "libs/luggage/feature-f58/ng-package.json"
@@ -2861,7 +2681,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f59/tsconfig.lib.json",
             "project": "libs/luggage/feature-f59/ng-package.json"
@@ -2898,6 +2718,50 @@
         }
       }
     },
+    "luggage-feature-f6": {
+      "projectType": "library",
+      "root": "libs/luggage/feature-f6",
+      "sourceRoot": "libs/luggage/feature-f6/src",
+      "prefix": "luggage",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/luggage/feature-f6/tsconfig.lib.json",
+            "project": "libs/luggage/feature-f6/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/luggage/feature-f6/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/luggage/feature-f6/tsconfig.lib.json",
+              "libs/luggage/feature-f6/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f6/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/luggage/feature-f6/jest.config.js",
+            "tsConfig": "libs/luggage/feature-f6/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/luggage/feature-f6/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "luggage-feature-f60": {
       "projectType": "library",
       "root": "libs/luggage/feature-f60",
@@ -2905,7 +2769,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f60/tsconfig.lib.json",
             "project": "libs/luggage/feature-f60/ng-package.json"
@@ -2949,7 +2813,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f61/tsconfig.lib.json",
             "project": "libs/luggage/feature-f61/ng-package.json"
@@ -2993,7 +2857,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f62/tsconfig.lib.json",
             "project": "libs/luggage/feature-f62/ng-package.json"
@@ -3037,7 +2901,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f63/tsconfig.lib.json",
             "project": "libs/luggage/feature-f63/ng-package.json"
@@ -3081,7 +2945,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f64/tsconfig.lib.json",
             "project": "libs/luggage/feature-f64/ng-package.json"
@@ -3125,7 +2989,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f65/tsconfig.lib.json",
             "project": "libs/luggage/feature-f65/ng-package.json"
@@ -3169,7 +3033,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f66/tsconfig.lib.json",
             "project": "libs/luggage/feature-f66/ng-package.json"
@@ -3213,7 +3077,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f67/tsconfig.lib.json",
             "project": "libs/luggage/feature-f67/ng-package.json"
@@ -3257,7 +3121,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f68/tsconfig.lib.json",
             "project": "libs/luggage/feature-f68/ng-package.json"
@@ -3301,7 +3165,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f69/tsconfig.lib.json",
             "project": "libs/luggage/feature-f69/ng-package.json"
@@ -3338,6 +3202,50 @@
         }
       }
     },
+    "luggage-feature-f7": {
+      "projectType": "library",
+      "root": "libs/luggage/feature-f7",
+      "sourceRoot": "libs/luggage/feature-f7/src",
+      "prefix": "luggage",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/luggage/feature-f7/tsconfig.lib.json",
+            "project": "libs/luggage/feature-f7/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/luggage/feature-f7/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/luggage/feature-f7/tsconfig.lib.json",
+              "libs/luggage/feature-f7/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f7/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/luggage/feature-f7/jest.config.js",
+            "tsConfig": "libs/luggage/feature-f7/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/luggage/feature-f7/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "luggage-feature-f70": {
       "projectType": "library",
       "root": "libs/luggage/feature-f70",
@@ -3345,7 +3253,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f70/tsconfig.lib.json",
             "project": "libs/luggage/feature-f70/ng-package.json"
@@ -3389,7 +3297,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f71/tsconfig.lib.json",
             "project": "libs/luggage/feature-f71/ng-package.json"
@@ -3433,7 +3341,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f72/tsconfig.lib.json",
             "project": "libs/luggage/feature-f72/ng-package.json"
@@ -3477,7 +3385,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f73/tsconfig.lib.json",
             "project": "libs/luggage/feature-f73/ng-package.json"
@@ -3521,7 +3429,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f74/tsconfig.lib.json",
             "project": "libs/luggage/feature-f74/ng-package.json"
@@ -3565,7 +3473,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f75/tsconfig.lib.json",
             "project": "libs/luggage/feature-f75/ng-package.json"
@@ -3609,7 +3517,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f76/tsconfig.lib.json",
             "project": "libs/luggage/feature-f76/ng-package.json"
@@ -3653,7 +3561,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f77/tsconfig.lib.json",
             "project": "libs/luggage/feature-f77/ng-package.json"
@@ -3697,7 +3605,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f78/tsconfig.lib.json",
             "project": "libs/luggage/feature-f78/ng-package.json"
@@ -3741,7 +3649,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f79/tsconfig.lib.json",
             "project": "libs/luggage/feature-f79/ng-package.json"
@@ -3778,6 +3686,50 @@
         }
       }
     },
+    "luggage-feature-f8": {
+      "projectType": "library",
+      "root": "libs/luggage/feature-f8",
+      "sourceRoot": "libs/luggage/feature-f8/src",
+      "prefix": "luggage",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/luggage/feature-f8/tsconfig.lib.json",
+            "project": "libs/luggage/feature-f8/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/luggage/feature-f8/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/luggage/feature-f8/tsconfig.lib.json",
+              "libs/luggage/feature-f8/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f8/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/luggage/feature-f8/jest.config.js",
+            "tsConfig": "libs/luggage/feature-f8/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/luggage/feature-f8/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "luggage-feature-f80": {
       "projectType": "library",
       "root": "libs/luggage/feature-f80",
@@ -3785,7 +3737,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f80/tsconfig.lib.json",
             "project": "libs/luggage/feature-f80/ng-package.json"
@@ -3829,7 +3781,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f81/tsconfig.lib.json",
             "project": "libs/luggage/feature-f81/ng-package.json"
@@ -3873,7 +3825,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f82/tsconfig.lib.json",
             "project": "libs/luggage/feature-f82/ng-package.json"
@@ -3917,7 +3869,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f83/tsconfig.lib.json",
             "project": "libs/luggage/feature-f83/ng-package.json"
@@ -3961,7 +3913,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f84/tsconfig.lib.json",
             "project": "libs/luggage/feature-f84/ng-package.json"
@@ -4005,7 +3957,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f85/tsconfig.lib.json",
             "project": "libs/luggage/feature-f85/ng-package.json"
@@ -4049,7 +4001,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f86/tsconfig.lib.json",
             "project": "libs/luggage/feature-f86/ng-package.json"
@@ -4093,7 +4045,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f87/tsconfig.lib.json",
             "project": "libs/luggage/feature-f87/ng-package.json"
@@ -4137,7 +4089,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f88/tsconfig.lib.json",
             "project": "libs/luggage/feature-f88/ng-package.json"
@@ -4181,7 +4133,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f89/tsconfig.lib.json",
             "project": "libs/luggage/feature-f89/ng-package.json"
@@ -4218,6 +4170,50 @@
         }
       }
     },
+    "luggage-feature-f9": {
+      "projectType": "library",
+      "root": "libs/luggage/feature-f9",
+      "sourceRoot": "libs/luggage/feature-f9/src",
+      "prefix": "luggage",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/luggage/feature-f9/tsconfig.lib.json",
+            "project": "libs/luggage/feature-f9/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/luggage/feature-f9/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/luggage/feature-f9/tsconfig.lib.json",
+              "libs/luggage/feature-f9/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f9/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/luggage/feature-f9/jest.config.js",
+            "tsConfig": "libs/luggage/feature-f9/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/luggage/feature-f9/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "luggage-feature-f90": {
       "projectType": "library",
       "root": "libs/luggage/feature-f90",
@@ -4225,7 +4221,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f90/tsconfig.lib.json",
             "project": "libs/luggage/feature-f90/ng-package.json"
@@ -4269,7 +4265,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f91/tsconfig.lib.json",
             "project": "libs/luggage/feature-f91/ng-package.json"
@@ -4313,7 +4309,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f92/tsconfig.lib.json",
             "project": "libs/luggage/feature-f92/ng-package.json"
@@ -4357,7 +4353,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f93/tsconfig.lib.json",
             "project": "libs/luggage/feature-f93/ng-package.json"
@@ -4401,7 +4397,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f94/tsconfig.lib.json",
             "project": "libs/luggage/feature-f94/ng-package.json"
@@ -4445,7 +4441,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f95/tsconfig.lib.json",
             "project": "libs/luggage/feature-f95/ng-package.json"
@@ -4489,7 +4485,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f96/tsconfig.lib.json",
             "project": "libs/luggage/feature-f96/ng-package.json"
@@ -4533,7 +4529,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f97/tsconfig.lib.json",
             "project": "libs/luggage/feature-f97/ng-package.json"
@@ -4577,7 +4573,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f98/tsconfig.lib.json",
             "project": "libs/luggage/feature-f98/ng-package.json"
@@ -4621,7 +4617,7 @@
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
             "tsConfig": "libs/luggage/feature-f99/tsconfig.lib.json",
             "project": "libs/luggage/feature-f99/ng-package.json"
@@ -4658,21 +4654,21 @@
         }
       }
     },
-    "luggage-feature-f100": {
+    "luggage-feature-report-loss": {
       "projectType": "library",
-      "root": "libs/luggage/feature-f100",
-      "sourceRoot": "libs/luggage/feature-f100/src",
+      "root": "libs/luggage/feature-report-loss",
+      "sourceRoot": "libs/luggage/feature-report-loss/src",
       "prefix": "luggage",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
-            "tsConfig": "libs/luggage/feature-f100/tsconfig.lib.json",
-            "project": "libs/luggage/feature-f100/ng-package.json"
+            "tsConfig": "libs/luggage/feature-report-loss/tsconfig.lib.json",
+            "project": "libs/luggage/feature-report-loss/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/luggage/feature-f100/tsconfig.lib.prod.json"
+              "tsConfig": "libs/luggage/feature-report-loss/tsconfig.lib.prod.json"
             }
           }
         },
@@ -4680,19 +4676,22 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/luggage/feature-f100/tsconfig.lib.json",
-              "libs/luggage/feature-f100/tsconfig.spec.json"
+              "libs/luggage/feature-report-loss/tsconfig.lib.json",
+              "libs/luggage/feature-report-loss/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/luggage/feature-f100/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/luggage/feature-report-loss/**/*"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/luggage/feature-f100/jest.config.js",
-            "tsConfig": "libs/luggage/feature-f100/tsconfig.spec.json",
+            "jestConfig": "libs/luggage/feature-report-loss/jest.config.js",
+            "tsConfig": "libs/luggage/feature-report-loss/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "libs/luggage/feature-f100/src/test-setup.ts"
+            "setupFile": "libs/luggage/feature-report-loss/src/test-setup.ts"
           }
         }
       },
@@ -4702,9 +4701,6 @@
         }
       }
     }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular"
   },
   "schematics": {
     "@nrwl/workspace": {
@@ -4748,6 +4744,5 @@
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
     }
-  },
-  "defaultProject": "luggage"
+  }
 }
